@@ -1,0 +1,31 @@
+#------------------
+# Caches
+#------------------
+.cache
+*.pyc
+.idea
+.mypy_cache/
+# macOS file-system supporting data
+.DS_Store
+_build
+
+#------------------
+# Runtime outputs
+#------------------
+web/test/results/
+web/cascade/static/results
+web/uploads/
+web/log/*
+web/temp/
+
+#------------------
+# Untracked
+#------------------
+untracked/
+deploy*.sh
+
+#------------------
+# Certs
+#------------------
+nginx/sslcert.crt
+nginx/sslcert.key

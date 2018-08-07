@@ -1,0 +1,115 @@
+<!doctype html>
+<head>
+    <!-- Bootstrap -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="a384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    
+    <!--  Bootstrap file input plugin from http://plugins.krajee.com/file-input -->
+    <link href="{{ url_for('static', filename='bs_fileinput/css/fileinput.min.css') }}" media="all" rel="stylesheet" type="text/css" />
+    <script src="{{ url_for('static', filename='bs_fileinput/js/fileinput.min.js') }}"></script>
+
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<script type="text/javascript">
+    function toggle_hidden() {
+        var button = document.getElementById("button-vis");
+        if (button.innerHTML === "Show legacy features") {
+            set_hideable("block");
+            button.innerHTML = "Hide legacy features";
+
+        } else {
+            set_hideable("none");
+            button.innerHTML = "Show legacy features";
+        }
+    }
+
+    function set_hideable(value) {
+        elements = document.getElementsByClassName("hideable");
+        for(var i=0; i<elements.length; i++){
+            elements[i].style.display = value;
+        }
+    }
+</script>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">
+                    <img src="{{ url_for('static', filename = 'cascade_logo.png') }}" alt="Cascade">
+                </a>
+                <p class="navbar-text"><i>v{{ version }}</i></p>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li {% if request.path == "/" %}class="active"{% endif %}>
+                        <a href="/">Home</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Utilities <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">General</li>
+                                <li><a href="/check">&nbsp&nbsp&nbsp Check</a></li>
+                                <li><a href="/annotate">&nbsp&nbsp&nbsp Annotate</a></li>
+                                <li><a href="/annotate_reset">&nbsp&nbsp&nbsp Annotate Reset</a></li>
+                            <li class="dropdown-header">Export</li>
+                                <li><a href="/aggregate">&nbsp&nbsp&nbsp Aggregate</a></li>
+                            <li class="dropdown-header">Migration</li>
+                                <li><a href="/apply_styles">&nbsp&nbsp&nbsp Apply Styles</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Downloads <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/static/downloads/cascade_style_master.docx">Style Master Document</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Help <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="http://cascaderequirements.readthedocs.io/en/latest/">Cascade Documentation</a></li>
+                            <li><a href="/help/changelog">Changelog</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+ 
+    <div class="container-fluid">
+        {% if privacy_warning == True %}
+            <div class='report-red'><b>Note:</b></div>
+            <div class='report-red indent'>
+                Cascade is hosted on a public server.  Using Cascade requires uploading your document to that server.  Cascade log files can and will contain your document content, and the current version of Cascade does not automatically delete your uploaded document from its internal working directories. Updates are coming soon to:<br>
+                &nbsp&nbsp• Periodically delete user content after ~5 minutes.<br>
+                &nbsp&nbsp• Provide user options to enable verbose logging only when you need developer support.<br><br>
+                While I endeavor to make the Cascade server as secure as possible, I cannot guarantee the security of content uploaded to this site.  By uploading your document to this site you accept the risk that a malicious site hack could obtain your document content.<br><br>
+                If you are concerned about your document's privacy then I suggest downloading Cascade from GitHub and hosting it on a private server or your local machine.
+            </div>
+        {% endif %}
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
+
+     <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+</body>

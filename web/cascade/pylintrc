@@ -1,0 +1,4 @@
+[MESSAGES CONTROL]
+disable=too-many-locals, too-many-branches, locally-disabled, too-many-statements, too-many-instance-attributes, no-name-in-module, import-error, global-statement
+max-line-length=100
+good-names=df,pp,qlog,lprint,verbose,app,ax,dt,i,j

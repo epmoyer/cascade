@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block title %}Cascade: {{cmd_name}}{% endblock %}
+{% block content %}
+
+    <h1>{{cmd_name}}</h1>
+    <div class="tab">
+        <form action="{{cmd_action}}" method="POST" enctype="multipart/form-data">
+            
+            {% if file_prompt is defined %}
+                <h2>{{ file_prompt }}</h2>
+            {% endif %}
+            <i class="minor">To submit a file drag it over the "Browse" button, or click "Browse"</i><br>
+            <input type="file" name="file" class="file" data-show-preview="false" /><br>
+
+            {% if file_prompt2 is defined %}
+                <h2>{{ file_prompt2 }}</h2>
+                <i class="minor">To submit a file drag it over the "Browse" button, or click "Browse"</i><br>
+                <input type="file" name="file2" class="file" data-show-preview="false" /><br>
+            {% endif %}
+
+            {% if text_prompt is defined %}
+                <h2>{{ text_prompt }}</h2>
+                <input type="text" name="text" class="form-control" /><br>
+            {% endif %}
+            
+            <input type="submit" class="btn btn-primary" value="Run {{cmd_name}}" />
+        </form>
+    </div>
+      
+{% endblock %}

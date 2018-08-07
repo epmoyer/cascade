@@ -1,0 +1,14 @@
+pandas
+pytest
+openpyxl == 2.4.7
+python-docx == 0.8.6
+Flask == 0.12.2
+Flask_Login == 0.4.0
+Flask_WTF == 0.14.2
+WTForms == 2.1
+docopt == 0.6.2
+colorama == 0.3.9
+jsonschema == 2.6.0
+docutils == 0.13.1
+eliot == 1.2.0
+eliot-tree == 17.1.0

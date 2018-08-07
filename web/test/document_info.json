@@ -1,0 +1,40 @@
+{
+    "#document_info" : {
+    "object_ids":[
+            {
+                "prefix": "ABC-DEF-",
+                "next_id": 100
+            }
+        ],
+        "schemas":[
+            {   
+                "title": "#shortform",
+                "type": "object",
+                "properties":{
+                    "id": {"type": "string"},
+                    "method": {"type": "string", "maxLength": 1, "pattern":"^(I|A|D|T|X)$"},
+                    "old_id": {"type": "string"},
+                    "satisfies": {"type": "array", "items": {"type": "string"}}
+                },
+                "required": ["id", "method"],
+                "additionalProperties": false
+            },
+            {   
+                "title": "#section",
+                "type": "object",
+                "properties":{
+                    "features": {"type": "array", "items": {"type": "string"}}
+                },
+                "additionalProperties": false
+            },
+            {   
+                "title": "#requirement",
+                "type": "object",
+                "properties":{
+                    "features": {"type": "array", "items": {"type": "string"}}
+                },
+                "additionalProperties": false
+            }
+        ]
+    }
+}

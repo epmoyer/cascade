@@ -1,0 +1,92 @@
+body {
+  padding-top: 45px;
+  padding-bottom: 4px;
+}
+
+h1 { font-size: 22px; line-height: 26px; }
+h2 { font-size: 20px; line-height: 24px; }
+h3 { font-size: 18px; line-height: 24px; }
+h4 { font-size: 16px; line-height: 20px; }
+h5 { font-size: 14px; line-height: 20px; }
+h6 { font-size: 12px; line-height: 20px; }
+
+.literal {
+    background-color: #f0f0f0;
+}
+
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+}
+
+.navbar-login
+{
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.navbar-login-session
+{
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.icon-size
+{
+    font-size: 87px;
+}
+
+/*----------------------------------------------------------*/
+/* Customize navbar to be shorter (25px) and support images */
+/*----------------------------------------------------------*/
+.navbar-nav > li > a, .navbar-text {
+    padding-top:5px !important; padding-bottom:0px !important;
+    height: 30px;
+    margin-top:0px; margin-bottom:0px;
+}
+.navbar-toggle {
+    padding:0px 4px !important;
+    height: 25px;
+    margin-top:3px; margin-bottom:0px;
+}
+.icon-bar {
+    margin-top:3px !important; 
+    margin-bottom:2px !important; 
+}
+.navbar-brand {
+    padding-top:0px !important; padding-bottom:0px !important;
+    height: 30px;
+}
+.navbar-brand>img {
+  height: 100%;
+  padding: 5px;
+  width: auto;
+}
+.navbar {min-height:30px !important;}
+
+
+/* Override Bootstrap's pre, to allow horizontal scrolling of wide text */
+pre {
+  word-wrap: normal;
+  white-space: pre;
+}
+
+.banner  { font-size: 1.9em; }
+.appname {  font-size: 18px; }
+.minor  { color: #A0A0A0; }
+.row-header {
+  padding: 5px;
+  background-color: #F7F7F7;
+  border: 1px solid #DDD;
+}
+.indent {margin-left: 30px;}
+.report-red {color: red;}
+.report-blue {color: blue;}
+.report-yellow {color: #B0B000;}
+.report-magenta {color: magenta;}
+.report-green {color: green;}
+.report-gray {color: gray;}
+.report-monospace {font-family: "Lucida Console", Monaco, monospace;}
+.tab { margin-left: 30px; }
