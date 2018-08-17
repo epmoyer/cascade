@@ -7,4 +7,4 @@ RUN useradd -ms /bin/bash docker_user
 VOLUME /home/cascade
 WORKDIR /home/cascade
 USER docker_user
-ENTRYPOINT ["python", "-m", "cascade", "-d", "-w", "http"]
+ENTRYPOINT ["python", "-m", "cascade", "-w", "http"]

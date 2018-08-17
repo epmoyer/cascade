@@ -12,9 +12,9 @@ _build
 #------------------
 # Runtime outputs
 #------------------
-web/test/results/
-web/cascade/static/results
-web/uploads/
+web/test/results/*
+web/cascade/static/results/*
+web/uploads/*
 web/log/*
 web/temp/
 
@@ -29,3 +29,5 @@ deploy*.sh
 #------------------
 nginx/sslcert.crt
 nginx/sslcert.key
+
+!.gitkeep

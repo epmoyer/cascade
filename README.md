@@ -10,7 +10,7 @@ Authoring, revising, publishing, and viewing Cascade documents requires no speci
 
 ## Current Status
 
-Cascade has been in active use for over a year as a proprietary closed source project.  This open source version (beginning with v2.0.0) is a **Beta** deployment to get the release, install, documentation, and reference server deployment operational before going "Live".  If you are one of the people I am working with directly then you should be using this release/documentation/reference server.  If you have stumbled upon this project on your own then you are welcome to make use of it; just realize that some of the documentation may be lacking right now.  Notably weak areas are:
+Cascade has been in active use for over two years as a proprietary closed source project.  This open source version (beginning with v2.0.0) is a **Beta** deployment to get the release, install, documentation, and reference server deployment operational before going "Live".  If you are one of the people I am working with directly then you should be using this release/documentation/reference server.  If you have stumbled upon this project on your own then you are welcome to make use of it; just realize that some of the documentation may be lacking right now.  Notably weak areas are:
 
 - Deployment instructions for setting up a custom server
 - Deployment instructions for running a local instance
