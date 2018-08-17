@@ -10,6 +10,13 @@ to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 (None)
 
+## v2.0.1 - 2018-Aug-06
+
+- Increase file upload size limit (nginx).
+- Fix in-app access to changelog.
+- Fix links to documentation.
+- Fix some TDBs in documentation.
+
 ## v2.0.0 - 2018-Aug-06
 
-- Open source release
+- Open Source release

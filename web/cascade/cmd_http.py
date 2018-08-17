@@ -15,7 +15,6 @@ from functools import wraps
 from flask import Flask, render_template, Markup, request
 from werkzeug import secure_filename
 from colorama import Fore
-from docutils.core import publish_parts
 from eliot import Message, start_action
 
 # Local
@@ -26,6 +25,7 @@ from cascade import cmd_apply_styles
 from cascade import cmd_aggregate
 from cascade.custom_exceptions import FatalUserError
 from cascade.version import __version__
+import markdown
 
 pp = pprint.PrettyPrinter(indent=3)
 
@@ -115,20 +115,15 @@ def page_unauthorized(e):
 def home():
     return render_template('home.html')
 
-@app.route('/help/users_guide')
-@log_route
-def help_users_guide():
-    return render_rst('USERS_GUIDE', 'cascade/static/users_guide/USERS_GUIDE.rst')
-
 @app.route('/help/changelog')
 @log_route
 def help_changelog():
-    return render_rst('CHANGELOG', 'CHANGELOG.rst')
+    return render_md('CHANGELOG', 'CHANGELOG.md')
 
-def render_rst(report_name, rst_filename):
-    with open(rst_filename, 'r') as in_file:
-        content_rst = in_file.read()
-    content_html = publish_parts(content_rst, writer_name='html')['html_body']
+def render_md(report_name, md_filename):
+    with open(md_filename, 'r') as in_file:
+        content_md = in_file.read()
+    content_html = markdown.markdown(content_md, extensions=['markdown.extensions.tables'])
     return render_template('basic.html', report_name=report_name, report=Markup(content_html))
 
 @app.route('/check')

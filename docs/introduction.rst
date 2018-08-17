@@ -45,7 +45,7 @@ Quick Start
 
 The quickest way to get started when Authoring a Cascade document is to:
 
-- Download the TBD "Blank ERD Template Document" from the "Downloads" menu.
+- Download the (TBD example document) from the "Downloads" menu.
 - Click "Show/Hide ¶" to show hidden text.
 - Edit the value of the ``"prefix"`` attribute in the ``#document_info`` directive to match your document (Note: The prefix must end in a "-")
 - There are examples of ``#shortform`` requirement directives in the "General" section.  Every requirement you write should begin with a ``#shortform`` directive.  The directive declares the id (requirement number), verification method, and (if they exist) requirements satisfied by the new requirement.
@@ -55,8 +55,8 @@ The quickest way to get started when Authoring a Cascade document is to:
 Where Cascade Lives
 *******************
 
-- Cascade is a web application. A publicly accessible version is maintained at: TBD
-- Cascade is open source.  If you want to host your own version on a private server (or locally on your machine) you can obtain it from GitHub at: TBD
+- Cascade is a web application. A publicly accessible version is maintained at: Cascade_
+- Cascade is open source.  If you want to host your own version on a private server (or locally on your machine) you can obtain it from GitHub at: GitHub_
 
 Cascade's Design Philosophy
 ***************************
@@ -84,3 +84,6 @@ Cascade's Design Philosophy
   - Metadata should be readable and maintainable by humans.
   - Publishing should be quick and easy.
   - Infrastructure issues (network, tools, licenses) should not prevent you from getting work done.
+
+  .. _Cascade: https://cascaderequirements.com
+  .. _GitHub: https://github.com/epmoyer/cascade
