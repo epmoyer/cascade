@@ -88,23 +88,53 @@
     </nav>
  
     <div class="container-fluid">
-        {% if privacy_warning == True %}
-            <div class='warning-box'>
-                <b>Note:</b>
-                <div class='indent'>
-                    Cascade is hosted on a public server.  Using Cascade requires uploading your document to that server.  Cascade log files can and will contain your document content, and the current version of Cascade does not automatically delete your uploaded document from its internal working directories. Updates are coming soon to:<br>
-                    &nbsp&nbsp• Periodically delete user content after ~5 minutes.<br>
-                    &nbsp&nbsp• Provide user options to enable verbose logging only when you need developer support.<br><br>
-                    While I endeavor to make the Cascade server as secure as possible, I cannot guarantee the security of content uploaded to this site.  By uploading your document to this site you accept the risk that a malicious site hack could obtain your document content.<br><br>
-                    If you are concerned about your document's privacy then I suggest downloading Cascade from GitHub and hosting it on a private server or your local machine.
+        {% if privacy_warning == True and not ('warning_dismissed' in session and session['warning_dismissed'] == True) %}
+        <div class='warning-box' id='warning-box'>
+            <div class='warning-row'>
+                <div class='warning-text'>
+                    Cascade is hosted on a public server.  Using Cascade requires uploading your document to that server.  Cascade log files can and will contain your document content, and the current version of Cascade does not automatically delete your uploaded document from its internal working directories. Updates are coming soon to: 
+                    #1) Periodically delete user content after ~5 minutes.
+                    #2) Provide user options to enable verbose logging only when you need developer support.<br><br>
+                    While I endeavor to make the Cascade server as secure as possible, I cannot guarantee the security of content uploaded to this site.  By uploading your document to this site you accept the risk that a malicious site hack could obtain your document content. If you are concerned about your document's privacy then I suggest downloading Cascade from GitHub and hosting it on a private server or your local machine.
+                </div>
+                <div class='warning-dismiss' id='warning-dismiss'>
+                    ✕
                 </div>
             </div>
+        </div>
         {% endif %}
 
         {% block content %}
         {% endblock %}
 
     </div>
+
+    <script>
+        var warning_dismiss = document.getElementById('warning-dismiss');
+
+        if(warning_dismiss){
+            warning_dismiss.style.cursor = 'pointer';
+            warning_dismiss.onclick = function() {
+                console.log('Clicked warning box.');
+                var this_box = document.getElementById('warning-box');
+                this_box.style.display = 'none';
+
+                $.ajax({
+                    type: "POST",
+                    url: "{{ url_for('get_post_json') }}",
+                    contentType: "application/json",
+                    data: JSON.stringify({dismiss_warning: true}),
+                    dataType: "json",
+                    success: function(response) {
+                        console.log(response);
+                    },
+                    error: function(err) {
+                        console.log(err);
+                    }
+                });
+            };
+        }
+    </script>
 
      <!-- Bootstrap core JavaScript
     ================================================== -->

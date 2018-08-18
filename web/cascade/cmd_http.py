@@ -12,7 +12,7 @@ from functools import wraps
 
 
 # Library
-from flask import Flask, render_template, Markup, request
+from flask import Flask, render_template, Markup, request, jsonify, session
 from werkzeug import secure_filename
 from colorama import Fore
 from eliot import Message, start_action
@@ -192,6 +192,15 @@ def do_aggregate():
             cmd_aggregate.aggregate,
             output_argument='<output.csv>')
 
+
+@app.route('/_get_post_json/', methods=['POST'])
+def get_post_json():    
+    data = request.get_json()
+    if 'dismiss_warning' in data and data['dismiss_warning']:
+        session['warning_dismissed'] = True
+        print('Warning dismissed for session.')
+    print(f'data={data}')
+    return jsonify(status="success", data=data)
 
 def run_command(operation, 
                 file,

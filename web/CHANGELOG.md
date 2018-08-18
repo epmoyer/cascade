@@ -10,9 +10,18 @@ to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 (None)
 
-## v2.0.1 - 2018-Aug-06
+## v2.0.2 - 2018-Aug-18
 
-- Increase file upload size limit (nginx).
+### Changed
+
+- Increase file upload size limit to 50M (nginx).
+- Re-style privacy notification as a cancelable footer.
+
+## v2.0.1 - 2018-Aug-17
+
+### Changed
+
+- Increase file upload size limit to 10M (nginx).
 - Fix in-app access to changelog.
 - Fix links to documentation.
 - Fix some TDBs in documentation.
