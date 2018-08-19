@@ -43,6 +43,9 @@ def check(arguments):
     lprint('Checking "{}"...'.format(filename))
     doc = WordDocx(qlog, os.path.abspath(filename))
 
+    # Check for change tracking elements and warn accordingly
+    doc.warn_on_change_tracking()
+
     if doc.doc_info_directive is None:
         qlog.error('Expected "document_info" directive not found in document "{}".'.format(filename))
         return False

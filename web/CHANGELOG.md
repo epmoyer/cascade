@@ -10,6 +10,12 @@ to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 (None)
 
+## v2.0.3 - 2018-Aug-18
+
+### Changed
+
+- Warn during document check if change tracking blocks exist.
+
 ## v2.0.2 - 2018-Aug-18
 
 ### Changed

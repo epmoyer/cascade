@@ -402,3 +402,31 @@ class WordDocx(object):
         '''Save the current file'''
         # TODO: Should this close as well?
         self._document.save(filename)
+
+    def warn_on_change_tracking(self):
+        '''Check whether the document contains change tracking elements and warn accordingly.'''
+        body = self._document._body._body
+
+        self._qlog.debug('warn_on_change_tracking()...')
+
+        ct_items = []
+        ct_insertions = body.xpath('*/w:ins')
+        ct_deletions = body.xpath('*/w:del')
+
+        if ct_insertions:
+            ct_items.append(f'{len(ct_insertions)} insertion{plural_s(len(ct_insertions))}')
+        if ct_deletions:
+            ct_items.append(f'{len(ct_deletions)} deletion{plural_s(len(ct_deletions))}')
+
+        if ct_items:
+            self._qlog.warning(
+                f'The document contains {" and ".join(ct_items)} made with ' +
+                'Change Tracking turned on. ' +
+                'Presently Cascade is unable to detect or modify text in Change Tracking blocks. ' +
+                'If you have Cascade directives in Change Tracking ' +
+                'blocks then Cascade will not see them ' +
+                'and will not be able to update them.'
+                )
+
+def plural_s(count):
+    return 's' if count != 1 else ''
