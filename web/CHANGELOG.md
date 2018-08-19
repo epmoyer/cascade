@@ -10,6 +10,12 @@ to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 (None)
 
+## v2.0.4 - 2018-Aug-19
+
+### Fixed
+
+- Fixed bug in "Aggregate" which could cause file format errors in output Excel document for large data sets.
+
 ## v2.0.3 - 2018-Aug-18
 
 ### Changed

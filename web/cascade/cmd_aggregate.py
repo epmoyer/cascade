@@ -273,11 +273,6 @@ class ExcelExporter():
         """
         worksheet_names = self.wb.get_sheet_names()
         alignment_default = Alignment(horizontal='left', wrapText=True, vertical='top')
-        for table_name in worksheet_names:
-            sheet = self.wb.get_sheet_by_name(table_name)
-            sheet.column_dimensions['A'].width = 41
-            for cell in sheet['A1':'A200']:
-                cell[0].alignment = alignment_default
 
         for worksheet_name in worksheet_names:
             worksheet = self.wb.get_sheet_by_name(name=worksheet_name)
@@ -287,33 +282,29 @@ class ExcelExporter():
             max_row = 0
             max_col = 0
             for row_index, row in enumerate(worksheet.rows):
+                max_row = max(max_row, row_index)
                 if row_index == self.tier_1_header_row-1:
                     continue
                 for col_index, cell in enumerate(row):
                     max_col = max(max_col, col_index)
-                    if row_index > 0 and col_index == 0 and not cell.value:
-                        # Stop on fist blank row heading
-                        end_reached = True
-                        max_row = row_index - 1
-                    if not end_reached:
-                        if row_index == self.tier_2_header_row - 1:
-                            # Column headings
-                            width_scale = 1.4
-                        else:
-                            # Content cells
-                            width_scale = 1.2
-                        if cell.value:
-                            column_width = len(str(cell.value)) * width_scale
-                            if col_index > 0:
-                                column_width = min(column_width, MAX_XLSX_COL_WIDTH)
-                            dims[cell.column] = max((dims.get(cell.column, 0), column_width))
-                        if row_index == self.tier_2_header_row - 1:
-                            cell.fill = self.fill
-                        cell.border = self.thin_border
-                        if col_index > 0:
-                            cell.alignment = alignment_default
 
-            worksheet.auto_filter.ref = "B2:{}{}".format(get_column_letter(max_col + 1), max_row)
+                    if row_index == self.tier_2_header_row - 1:
+                        # Column headings
+                        width_scale = 1.4
+                    else:
+                        # Content cells
+                        width_scale = 1.2
+                    if cell.value:
+                        column_width = len(str(cell.value)) * width_scale
+                        column_width = min(column_width, MAX_XLSX_COL_WIDTH)
+                        dims[cell.column] = max((dims.get(cell.column, 0), column_width))
+                    if row_index == self.tier_2_header_row - 1:
+                        cell.fill = self.fill
+                    cell.border = self.thin_border
+                    cell.alignment = alignment_default
+
+            cell_filter = f'B2:{get_column_letter(max_col + 1)}{max_row+1}'
+            worksheet.auto_filter.ref = cell_filter
 
             for col, value in dims.items():
                 worksheet.column_dimensions[col].width = value
