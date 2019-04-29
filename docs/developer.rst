@@ -4,7 +4,7 @@ Developer Notes
 Source Control
 ^^^^^^^^^^^^^^
 
-Cascade is maintained on GitHub at: TBD
+Cascade is maintained on GitHub at: `Cascade Git Repo`_
 
 Requirements
 ^^^^^^^^^^^^
@@ -24,7 +24,7 @@ Development Environment
 To setup a local Cascade development environment:
 
 - Install Docker_
-- Clone the git repo. (TBD)
+- Clone the `Cascade Git Repo`_
 - cd into the repo: ``cd cascade``
 - Build the Docker container: ``./docker_build.sh``
 - Start Cascade, in the container, running in http mode on localhost: ``python docker_start.py --local``
@@ -110,3 +110,4 @@ TBD
 .. _Python: http://www.python.org/
 .. _Docker: https://www.docker.com/
 .. _Flask: http://flask.pocoo.org/
+.. _Cascade Git Repo: https://github.com/epmoyer/cascade/

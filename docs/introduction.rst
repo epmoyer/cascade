@@ -56,7 +56,7 @@ Where Cascade Lives
 *******************
 
 - Cascade is a web application. A publicly accessible version is maintained at: Cascade_
-- Cascade is open source.  If you want to host your own version on a private server (or locally on your machine) you can obtain it from GitHub at: GitHub_
+- Cascade is open source.  If you want to host your own version on a private server (or locally on your machine) you can obtain it from GitHub at: `Cascade Git Repo`_
 
 Cascade's Design Philosophy
 ***************************
@@ -86,4 +86,4 @@ Cascade's Design Philosophy
   - Infrastructure issues (network, tools, licenses) should not prevent you from getting work done.
 
   .. _Cascade: https://cascaderequirements.com
-  .. _GitHub: https://github.com/epmoyer/cascade
+  .. _Cascade Git Repo: https://github.com/epmoyer/cascade/
